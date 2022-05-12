@@ -1,5 +1,5 @@
 """For sampling data to pass into fitting. [danslater, 7apr22]"""
-from src.paramat.data_chief import DataItem
+from src.data_chief import DataItem
 
 
 def sample(dataitem: DataItem, sample_size: int):

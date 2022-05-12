@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.backends.backend_pdf import PdfPages
 
-from src.paramat.data_chief import DataItem, DataSet
+from src.data_chief import DataItem, DataSet
 
 STRAIN_KEY = 'Strain'
 STRESS_KEY = 'Stress(MPa)'
@@ -39,7 +39,6 @@ def make_plots(cfg: Dict):
         before_after_processing,
         fitted_curves,
         report_plots,
-        easy_view_receipts
     ]
 
     for plot in plots:

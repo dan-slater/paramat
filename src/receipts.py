@@ -6,14 +6,14 @@ from typing import Dict
 import pandas as pd
 from jinja2 import Environment, FileSystemLoader, meta
 from matplotlib import pyplot as plt
-from src.paramat.data_chief import DataSet, DataItem
-from src.paramat.plotting import make_raw_plot, make_processing_plot, make_fitted_plot, make_error_histogram
+from src.data_chief import DataSet, DataItem
+from src.plotting import make_raw_plot, make_processing_plot, make_fitted_plot, make_error_histogram
 
 ENV = Environment(
     variable_start_string=r'\VAR{',
     variable_end_string='}',
     autoescape=False,
-    loader=FileSystemLoader(os.path.abspath('../..'))
+    loader=FileSystemLoader(os.path.abspath('..'))
 )
 
 PREPARED_DATA = r'../data/02 prepared data'
