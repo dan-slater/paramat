@@ -12,21 +12,15 @@ To use ParaMat, first install it using pip:
 
    pip install paramat
 
-Creating recipes
-----------------
+Loading a dataset
+-----------------
 
 To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+you can use the ``data_chief.DataSet.load()`` function:
 
-.. autofunction:: lumache.get_random_ingredients(kind=None)
+.. autofunction:: data_chief.DataSet.load()
 
 
-
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :func:`lumache.get_random_ingredients`
-will raise an exception.
-
-.. autoexception:: lumache.InvalidKindError
 
 
 

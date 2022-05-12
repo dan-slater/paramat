@@ -4,7 +4,7 @@ from dataclasses import dataclass
 import numpy as np
 from matplotlib import pyplot as plt
 
-from src.paramat_test.data_chief import DataSet, DataItem
+from src.data_chief import DataSet, DataItem
 
 PROCESSED_DATA = r'../data/03 processed data'
 PROCESSED_INFO = r'../info/03 processed info.xlsx'

@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.backends.backend_pdf import PdfPages
 
-from src.paramat_test.data_chief import DataItem, DataSet
+from src.data_chief import DataItem, DataSet
 
 STRAIN_KEY = 'Strain'
 STRESS_KEY = 'Stress(MPa)'

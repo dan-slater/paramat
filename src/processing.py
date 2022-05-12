@@ -8,7 +8,7 @@ import pandas as pd
 from scipy.signal import savgol_filter
 from sklearn.cluster import DBSCAN
 
-from src.paramat_test.data_chief import DataItem
+from src.data_chief import DataItem
 
 
 def process_data(dataitem: DataItem, cfg: Dict):
