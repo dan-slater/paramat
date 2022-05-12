@@ -3,9 +3,9 @@ from typing import Dict
 
 import numpy as np
 
-import src.models as hm
-from src.data_chief import DataItem
-from src.sampling import sample
+import src.paramat.models as hm
+from src.paramat.data_chief import DataItem
+from src.paramat.sampling import sample
 
 
 model_funcs = [
