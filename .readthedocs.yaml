@@ -16,13 +16,13 @@ sphinx:
    fail_on_warning: false
 
 formats:
-   - html
+#    - html
    - pdf
 
 python:
    install:
     - method: pip
 #       path: .
-    - requirements: requirements.txt
+#     - requirements: requirements.txt
     - requirements: docs/requirements.txt
    
