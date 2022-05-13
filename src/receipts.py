@@ -16,64 +16,54 @@ ENV = Environment(
     loader=FileSystemLoader(os.path.abspath('..'))
 )
 
-PREPARED_DATA = r'../data/02 prepared data'
-PREPARED_INFO = r'../info/02 prepared info.xlsx'
-
-PROCESSED_DATA = r'../data/03 processed data'
-PROCESSED_INFO = r'../info/03 processed info.xlsx'
-
-FITTED_DATA = r'../data/04 fitted data'
-FITTED_INFO = r'../info/04 fitted info.xlsx'
-
-TEMPLATE = r'src/plots/receipts/template.tex'
-OUTPUT = r'plots/receipts/tests'
+# PREPARED_DATA = r'../data/02 prepared data'
+# PREPARED_INFO = r'../info/02 prepared info.xlsx'
+#
+# PROCESSED_DATA = r'../data/03 processed data'
+# PROCESSED_INFO = r'../info/03 processed info.xlsx'
+#
+# FITTED_DATA = r'../data/04 fitted data'
+# FITTED_INFO = r'../info/04 fitted info.xlsx'
+#
+# TEMPLATE = r'src/plots/receipts/template.tex'
+# OUTPUT = r'plots/receipts/tests'
 
 
 def easy_view_receipts(cfg):
-    empty_vars = parse_vars_from_template(TEMPLATE)
-
+    empty_vars = parse_vars_from_template(cfg['template'])
     prepped_set = DataSet()
-    prepped_set.load(PREPARED_DATA, PREPARED_INFO)
+    prepped_set.load(cfg['prepared_data'], cfg['prepared_info'])
     for dataitem in prepped_set.datamap:
-        # break
         id = dataitem.test_id
-        make_output_folder(OUTPUT, id)
-
+        make_output_folder(cfg['output'], id)
         fig, ax = plt.subplots(1, 1, figsize=(8, 4))
         make_raw_plot(ax, dataitem, 'gleeble-out-strain.pdf', mode='strain')
         plt.close()
         fig, ax = plt.subplots(1, 1, figsize=(8, 4))
         make_raw_plot(ax, dataitem, 'gleeble-out-time.pdf', mode='time')
         plt.close()
-        # break
-
     processed_set = DataSet()
-    processed_set.load(PROCESSED_DATA, PROCESSED_INFO)
+    processed_set.load(cfg['processed_data'], cfg['processed_info'])
     for dataitem in processed_set.datamap:
-        # break
         fig, ax = plt.subplots(1, 1, figsize=(8, 4))
         make_processing_plot(ax, dataitem, 'processing-strain.pdf', mode='strain')
         plt.close()
         fig, ax = plt.subplots(1, 1, figsize=(8, 4))
         make_processing_plot(ax, dataitem, 'processing-time.pdf', mode='time')
         plt.close()
-        # break
-
     fitted_set = DataSet()
-    fitted_set.load(FITTED_DATA, FITTED_INFO)
+    fitted_set.load(cfg['fitted_data'], cfg['fitted_info'])
     for dataitem in fitted_set.datamap:
         id = dataitem.test_id
-
         fig, ax = plt.subplots(1, 1, figsize=(8, 4))
         make_fitted_plot(ax, dataitem, 'fitted-plot.pdf', mode='data')
         plt.close()
         fig, ax = plt.subplots(1, 1, figsize=(8, 4))
         make_error_histogram(ax, dataitem, 'fitted-error-repr-curve.pdf')
         plt.close()
-
         filled_vars = fill_vars(empty_vars, dataitem)
-        write_output_file(TEMPLATE, f'{OUTPUT}/{id}/{id}_receipt.tex', filled_vars)
-        make_latex_pdf(id, f'{OUTPUT}/{id}')
+        write_output_file(cfg['template'], f'{cfg["output"]}/{id}/{id}_receipt.tex', filled_vars)
+        make_latex_pdf(id, f'{["output"]}/{id}')
         # break
 
 
